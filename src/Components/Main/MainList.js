@@ -135,7 +135,7 @@ const MainList = () => {
         <ul>
           {users.map((user) => (
             <li key={user.email}>
-              {user.lastName}, {user.firstName}
+              {user.time}, {user.date}
             </li>
           ))}
         </ul>
