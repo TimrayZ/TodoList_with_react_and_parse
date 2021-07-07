@@ -4,8 +4,8 @@ import {
   getById,
   createTodo,
   removeTodo
-} from "/src/Common/Services/TodolistService";
-import { createUser, getAllUsers } from "/src/Common/Services/LearnService";
+} from "../../../src/Common/Services/TodolistService";
+import { createUser, getAllUsers } from "../../../src/Common/Services/LearnService";
 import MainForm from "./MainForm";
 
 /* STATEFUL PARENT COMPONENT */
