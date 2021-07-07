@@ -5,14 +5,14 @@ const url = "https://my-json-server.typicode.com/TimrayZ/demo";
 
 // const url = "http://localhost:3004";
 
-export const createUser = (id, firstName, lastName, email, password) => {
+export const createUser = (id, time, date, email, password) => {
   return axios({
     method: "post",
     url: `${url}/users`,
     data: {
       id,
-      firstName,
-      lastName,
+      time,
+      date,
       email,
       password
     },
