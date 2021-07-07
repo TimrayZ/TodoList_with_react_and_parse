@@ -5,6 +5,7 @@ import {
   createTodo,
   removeTodo
 } from "/src/Common/Services/TodolistService";
+import { createUser, getAllUsers } from "/src/Common/Services/LearnService";
 import MainForm from "./MainForm";
 
 /* STATEFUL PARENT COMPONENT */
@@ -79,6 +80,14 @@ const MainList = () => {
     setName(e.target.value);
   };
 
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getAllUsers().then((users) => {
+      setUsers(users);
+    });
+  }, [users]);
+
   return (
     <div>
       <hr />
@@ -121,6 +130,16 @@ const MainList = () => {
       </div>
       {/* Stateless Child component passing up events from form */}
       <MainForm onClick={onClickHandler} onChange={onChangeHandler} />
+      Finished items:
+      {users.length > 0 && (
+        <ul>
+          {users.map((user) => (
+            <li key={user.email}>
+              {user.lastName}, {user.firstName}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
