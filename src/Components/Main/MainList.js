@@ -99,7 +99,9 @@ const MainList = () => {
               <div>
                 <span>
                   {/* Using getter for todo Object to display name */}
-                  <li key={todo.id}>{todo.get("name")}</li>{" "}
+                  <li key={todo.id}>Task: {todo.get("name")}</li>{" "}
+                  <li key={todo.id}>Started from: {todo.get("startTime")}</li>{" "}
+                  <li key={todo.id}>End at: {todo.get("endTime")}</li>{" "}
                   {/* Button with inline click handler to obtain 
                   instance of todo for remove state variable*/}
                   <button
