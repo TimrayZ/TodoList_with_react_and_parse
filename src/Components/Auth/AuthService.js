@@ -20,3 +20,19 @@ export const createUser = (newUser) => {
       alert(`Error: ${error.message}`);
     });
 };
+
+// used in auth login component
+export const loginUser = (newUser) => {
+  const user = Parse.User.logIn(newUser.email, newUser.password);
+
+  console.log("User logging in: ", user);
+  Parse.User.enableUnsafeCurrentUser()
+  const currentUser = Parse.User.current();
+  return user
+    .then((currentUser) => {
+      return currentUser;
+    })
+    .catch((error) => {
+      alert(`Error: ${error.message}`);
+    });
+};

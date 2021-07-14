@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createUser } from "./AuthService";
 import AuthForm from "./AuthForm";
+import { Redirect } from "react-router-dom";
+import Parse from "parse";
 
 const AuthRegister = () => {
   const [newUser, setNewUser] = useState({
@@ -27,6 +29,22 @@ const AuthRegister = () => {
       });
     }
   }, [newUser, add]);
+
+  //if already logged in, jump to mainList page.
+  Parse.User.enableUnsafeCurrentUser();
+  const currentUser = Parse.User.current();
+  if (currentUser) {
+    alert(
+      `${currentUser.get("firstName")} ${currentUser.get(
+        "email"
+      )}, you are already logged in, jump to edit page!`
+    );
+    return (
+      <div>
+        <Redirect to="/main" />
+      </div>
+    );
+  }
 
   const onChangeHandler = (e) => {
     e.preventDefault();

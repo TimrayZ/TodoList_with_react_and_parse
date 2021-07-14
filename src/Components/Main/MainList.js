@@ -5,7 +5,6 @@ import {
   createTodo,
   removeTodo
 } from "../../../src/Common/Services/TodolistService";
-import { createUser, getAllUsers } from "../../../src/Common/Services/LearnService";
 import MainForm from "./MainForm";
 
 /* STATEFUL PARENT COMPONENT */
@@ -14,6 +13,8 @@ const MainList = () => {
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState([]);
   const [name, setName] = useState();
+  const [startTime, setStartTime] = useState();
+  const [endTime, setEndTime] = useState();
 
   // UseEffect to run when the page loads to
   // obtain async data and render
@@ -38,7 +39,7 @@ const MainList = () => {
   useEffect(() => {
     // Check for add flag and make sure name state variable is defined
     if (name && add) {
-      createTodo(name).then((newTodo) => {
+      createTodo(name, startTime, endTime).then((newTodo) => {
         setAdd(false);
         // Add the newly created todo to the todos array
         // to render the new list of todos (thru spread/concatination)
@@ -62,7 +63,7 @@ const MainList = () => {
       // Reset remove state variable
       setRemove("");
     }
-  }, [name, todos, add, remove]);
+  }, [name, startTime, endTime, todos, add, remove]);
 
   // Handler to handle event passed from child submit button
   const onClickHandler = (e) => {
@@ -80,13 +81,19 @@ const MainList = () => {
     setName(e.target.value);
   };
 
-  const [users, setUsers] = useState([]);
+  const onStChangeHandler = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    // Continuously updating name to be added on submit
+    setStartTime(new Date(e.target.value));
+  };
 
-  useEffect(() => {
-    getAllUsers().then((users) => {
-      setUsers(users);
-    });
-  }, [users]);
+  const onEdChangeHandler = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    // Continuously updating name to be added on submit
+    setEndTime(new Date(e.target.value));
+  };
 
   return (
     <div>
@@ -100,8 +107,12 @@ const MainList = () => {
                 <span>
                   {/* Using getter for todo Object to display name */}
                   <li key={todo.id}>Task: {todo.get("name")}</li>{" "}
-                  <li key={todo.id}>Started from: {todo.get("startTime").toLocaleString()}</li>{" "}
-                  <li key={todo.id}>End at: {todo.get("endTime").toLocaleString()}</li>{" "}
+                  <li key={todo.id + "2"}>
+                    Started from: {todo.get("startTime").toLocaleString()}
+                  </li>{" "}
+                  <li key={todo.id + "3"}>
+                    End at: {todo.get("endTime").toLocaleString()}
+                  </li>{" "}
                   {/* Button with inline click handler to obtain 
                   instance of todo for remove state variable*/}
                   <button
@@ -118,30 +129,23 @@ const MainList = () => {
           </ul>
         )}
       </div>
-      <div>
+      {/* <div>
         <p> Todo by ID: </p>
-        {/* Check that the todo object exists */}
         {Object.keys(todo).length > 0 && (
           <ul>
-            {/* Using getter for todo Object to display name */}
-            {todos.map((todo) => (
+              {todos.map((todo) => (
               <li key={"1" + todo.id}> {todo.id} </li>
             ))}
           </ul>
         )}
-      </div>
+      </div> */}
       {/* Stateless Child component passing up events from form */}
-      <MainForm onClick={onClickHandler} onChange={onChangeHandler} />
-      Finished items:
-      {users.length > 0 && (
-        <ul>
-          {users.map((user) => (
-            <li key={user.email}>
-              {user.time}, {user.date}
-            </li>
-          ))}
-        </ul>
-      )}
+      <MainForm
+        onClick={onClickHandler}
+        onChange={onChangeHandler}
+        onStChange={onStChangeHandler}
+        onEdChange={onEdChangeHandler}
+      />
     </div>
   );
 };

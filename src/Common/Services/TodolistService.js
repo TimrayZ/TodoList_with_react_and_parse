@@ -2,12 +2,14 @@ import Parse from "parse";
 /* SERVICE FOR PARSE SERVER OPERATIONS */
 
 // CREATE operation - new todo with Name
-export const createTodo = (Name) => {
+export const createTodo = (Name, StartTime, EndTime) => {
   console.log("Creating: ", Name);
   const Todo = Parse.Object.extend("Todo");
   const todo = new Todo();
   // using setter to UPDATE the object
   todo.set("name", Name);
+  todo.set("startTime", new Date(StartTime));
+  todo.set("endTime", new Date(EndTime));
   return todo.save().then((result) => {
     // returns new Todo object
     return result;

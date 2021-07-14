@@ -9,7 +9,9 @@ import {
   Switch
 } from "react-router-dom";
 import AuthModule from "./Auth/Auth.js";
+import AuthLogin from "./Auth/AuthLogin";
 import AuthRegister from "./Auth/AuthRegister";
+import MainList from "./Main/MainList.js";
 
 const Components = () => {
   return (
@@ -17,15 +19,14 @@ const Components = () => {
       <Router>
         <div>
           {/* <Home /> */}
-          <Route path="/main" exact component={MainModule} />
+          <Route path="/main" exact component={MainList} />
           {/* <About /> */}
           <Route path="/about" component={About} />
           <Route path="/auth" exact component={AuthModule} />
           <Route path="/register" component={AuthRegister} />
-          {/* <Route path="/login" component={AuthLogin} />
-          <Route path="/main" component={MainModule} /> */}
+          <Route path="/login" component={AuthLogin} />
         </div>
-        <Redirect to="/auth" />
+        <Redirect to="/about" />
         <Footer />
       </Router>
     </div>
