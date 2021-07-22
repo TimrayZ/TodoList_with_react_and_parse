@@ -58,6 +58,20 @@ const AuthForm = ({ user, onChange, onSubmit }) => {
           />
         </div>
         <div className="form-group">
+          <label>Registration Key</label>
+          <br />
+          <input
+            type="password"
+            className="form-control"
+            id="reg-key-typed-input"
+            value={user.regKeyTyped}
+            onChange={onChange}
+            name="regKeyTyped"
+            min="0"
+            required
+          />
+        </div>
+        <div className="form-group">
           <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
             Submit
           </button>
