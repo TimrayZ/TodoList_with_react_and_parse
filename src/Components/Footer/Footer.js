@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UserFooter from "./UserFooter";
 
 const Footer = () => (
   <footer>
@@ -19,16 +20,7 @@ const Footer = () => (
             Go to guest version: check Tim's unavailable time
           </Link>
         </li>
-        <li>
-        <Link to="/register">
-          <button>Register</button>
-        </Link>
-        </li>
-        <li>
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        </li>
+        <UserFooter />
       </ul>
     </nav>
   </footer>

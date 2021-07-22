@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
 import ProtectedRoute from "../../Common/AppTools/ProtectedRoute";
 import MainList from "./MainList";
+import Parse from "parse";
 
 /* MAIN MODULE WITH STATEFUL PARENT AND STATELESS CHILD */
 const MainModule = () => {
-  const [flag, setFlag] = useState(false);
-
-  var check = document.getElementById("flagBox");
-
-  useEffect(() => {
-    if (check) {
-      if (check.checked) {
-        console.log("GOOD");
-        setFlag(true);
-      } else {
-        console.log("BAD");
-        setFlag(false);
-      }
-    }
-  }, [check]);
-
+  Parse.User.enableUnsafeCurrentUser();
+  const currentUser = Parse.User.current();
+  console.log("on main - User: ", currentUser);
   // return (
   //   <div>
   //     This is the main module.
@@ -28,7 +15,12 @@ const MainModule = () => {
   // );
   return (
     <div>
-      <ProtectedRoute exact path="/main" flag={flag} component={MainList} />
+      <ProtectedRoute
+        exact
+        path="/mainlist"
+        currentUser={currentUser}
+        component={MainList}
+      />
     </div>
   );
 };

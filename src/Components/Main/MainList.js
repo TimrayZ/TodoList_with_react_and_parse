@@ -11,7 +11,7 @@ import MainForm from "./MainForm";
 const MainList = () => {
   // Variables in the state to hold data
   const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState([]);
+  // const [todo, setTodo] = useState([]);
   const [name, setName] = useState();
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
@@ -24,10 +24,10 @@ const MainList = () => {
       setTodos(todos);
     });
 
-    getById("iMnRXuVnUU").then((todo) => {
-      console.log(todo);
-      setTodo(todo);
-    });
+    // getById("iMnRXuVnUU").then((todo) => {
+    //   console.log(todo);
+    //   setTodo(todo);
+    // });
   }, []);
 
   // Flags in the state to watch for add/remove updates
@@ -106,7 +106,7 @@ const MainList = () => {
               <div>
                 <span>
                   {/* Using getter for todo Object to display name */}
-                  <li key={todo.id}>Task: {todo.get("name")}</li>{" "}
+                  <li key={todo.id}>Task: {todo.get("name")} created by {(todo.get("user")).get("firstName")}</li>{" "}
                   <li key={todo.id + "2"}>
                     Started from: {todo.get("startTime").toLocaleString()}
                   </li>{" "}
