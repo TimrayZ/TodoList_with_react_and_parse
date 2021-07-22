@@ -106,7 +106,7 @@ const MainList = () => {
               <div>
                 <span>
                   {/* Using getter for todo Object to display name */}
-                  <li key={todo.id}>Task: {todo.get("name")} created by {(todo.get("user")).get("firstName")}</li>{" "}
+                  <li key={todo.id}>Task: {todo.get("name")} created by {(todo.get("user")).get("username")}</li>{" "}
                   <li key={todo.id + "2"}>
                     Started from: {todo.get("startTime").toLocaleString()}
                   </li>{" "}
