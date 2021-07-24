@@ -2,11 +2,7 @@ import React from "react";
 import MainModule from "./Main/Main.js";
 import About from "./SecondView/About";
 import Footer from "./Footer/Footer";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import AuthModule from "./Auth/Auth.js";
 import AuthLogin from "./Auth/AuthLogin";
 import AuthLogout from "./Auth/AuthLogout";
@@ -16,6 +12,9 @@ import MainList from "./Main/MainList.js";
 const Components = () => {
   return (
     <div>
+      <div class="title">
+        <h1>MyScheduler</h1>
+      </div>
       <Router>
         <div>
           {/* <Home /> */}
@@ -29,6 +28,9 @@ const Components = () => {
           <Route path="/logout" component={AuthLogout} />
         </div>
         <Redirect to="/about" />
+        <br />
+        <br />
+        <br />
         <Footer />
       </Router>
     </div>

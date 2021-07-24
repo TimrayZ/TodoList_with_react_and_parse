@@ -9,7 +9,7 @@ export const createTodo = (Name, StartTime, EndTime) => {
   //setting private property:
   const postACL = new Parse.ACL(Parse.User.current());
   postACL.setPublicReadAccess(true);
-  postACL.setWriteAccess("HKEqxS6elv", true);//host can modify all options
+  postACL.setWriteAccess("HKEqxS6elv", true); //host can modify all options
   todo.setACL(postACL);
 
   // using setter to UPDATE the object
@@ -19,7 +19,10 @@ export const createTodo = (Name, StartTime, EndTime) => {
 
   Parse.User.enableUnsafeCurrentUser();
   const currentUser = Parse.User.current();
-  todo.set("user", currentUser)
+  todo.set("user", currentUser);
+  todo.set("userFirstName", currentUser.get("firstName"));
+  todo.set("userLastName", currentUser.get("lastName"));
+
   return todo.save().then((result) => {
     // returns new Todo object
     return result;
@@ -52,7 +55,6 @@ export const removeTodo = (id) => {
   const query = new Parse.Query(Todo);
 
   return query.get(id).then((todo) => {
-      
     todo.destroy();
   });
 };

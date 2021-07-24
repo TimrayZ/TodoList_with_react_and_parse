@@ -9,8 +9,11 @@ const MainForm = ({ onChange, onStChange, onEdChange, onClick }) => {
       Click submit to add a todo
       <form>
         <input text="test" onChange={onChange} />
+        <br />
         <input type="datetime-local" onChange={onStChange} />
+        <br />
         <input type="datetime-local" onChange={onEdChange} />
+        <br />
         <button type="submit" onClick={onClick}>
           Submit
         </button>

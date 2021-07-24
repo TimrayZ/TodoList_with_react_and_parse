@@ -92,16 +92,16 @@ const MainList = () => {
                 <span>
                   {/* Using getter for todo Object to display name */}
                   <li key={todo.id}>Occupied between: </li>{" "}
-                  <li key={todo.id + '2'}>
+                  <li key={todo.id + "2"}>
                     Started from: {todo.get("startTime").toLocaleString()}
                   </li>{" "}
-                  <li key={todo.id + '3'}>
+                  <li key={todo.id + "3"}>
                     End at: {todo.get("endTime").toLocaleString()}
                   </li>{" "}
-                  <br />
                   {/* Button with inline click handler to obtain 
                   instance of todo for remove state variable*/}
                 </span>
+                <br />
               </div>
             ))}
           </ul>

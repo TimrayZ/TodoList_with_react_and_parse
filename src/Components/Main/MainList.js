@@ -98,7 +98,7 @@ const MainList = () => {
   return (
     <div>
       <hr />
-      This is the main list parent component.
+      Host schedule
       <div>
         {todos.length > 0 && (
           <ul>
@@ -106,7 +106,11 @@ const MainList = () => {
               <div>
                 <span>
                   {/* Using getter for todo Object to display name */}
-                  <li key={todo.id}>Task: {todo.get("name")} created by {(todo.get("user")).get("username")}</li>{" "}
+                  <li key={todo.id}>Task: {todo.get("name")}</li>{" "}
+                  <li key={todo.id + "4"}>
+                    Created by: {todo.get("userFirstName")}{" "}
+                    {todo.get("userLastName")}
+                  </li>{" "}
                   <li key={todo.id + "2"}>
                     Started from: {todo.get("startTime").toLocaleString()}
                   </li>{" "}
@@ -121,9 +125,10 @@ const MainList = () => {
                       setRemove(todo.id);
                     }}
                   >
-                    Delete
+                    Delete the item
                   </button>
                 </span>
+                <br />
               </div>
             ))}
           </ul>

@@ -26,7 +26,7 @@ export const loginUser = (newUser) => {
   const user = Parse.User.logIn(newUser.email, newUser.password);
 
   console.log("User logging in: ", user);
-  Parse.User.enableUnsafeCurrentUser()
+  Parse.User.enableUnsafeCurrentUser();
   const currentUser = Parse.User.current();
   return user
     .then((currentUser) => {

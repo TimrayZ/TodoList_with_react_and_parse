@@ -3,7 +3,7 @@ import { createUser } from "./AuthService";
 import AuthForm from "./AuthForm";
 import { Redirect } from "react-router-dom";
 import Parse from "parse";
-import {getById} from "../../Common/Services/RegKeyServices"
+import { getById } from "../../Common/Services/RegKeyServices";
 
 const AuthRegister = () => {
   const [newUser, setNewUser] = useState({
@@ -19,21 +19,20 @@ const AuthRegister = () => {
   const [regKey, setRegKey] = useState(false);
 
   useEffect(() => {
-
     getById("x4yZtGi3yS").then((regKey) => {
-      console.log("key is:" , regKey);
-      console.log("key typed in is:" , newUser.regKeyTyped);
+      console.log("key typed in is:", newUser.regKeyTyped);
       if (regKey === newUser.regKeyTyped) {
         setRegKey(true);
-        console.log("key is:" , regKey, "equal to ", newUser.regKeyTyped);
+        console.log("key is:", regKey, "equal to ", newUser.regKeyTyped);
+      } else {
+        setRegKey(false);
       }
-      else { setRegKey(false);}
     });
   }, [newUser.regKeyTyped]);
 
   // useEffect that run when changes are made to the state variable flags
   useEffect(() => {
-    if (regKey){
+    if (regKey) {
       if (newUser && add) {
         createUser(newUser).then((userCreated) => {
           if (userCreated) {
@@ -45,12 +44,11 @@ const AuthRegister = () => {
           setAdd(false);
         });
       }
-    }
-    else if (add)
-    {alert(
-      `${newUser.regKeyTyped} is not a valid registration key, please contact zzhao6@nd.edu to gain access!`
-    );
-    setAdd(false);
+    } else if (add) {
+      alert(
+        `${newUser.regKeyTyped} is not a valid registration key, please contact zzhao6@nd.edu to gain access!`
+      );
+      setAdd(false);
     }
   }, [newUser, add, regKey]);
 

@@ -5,7 +5,7 @@ import UserFooter from "./UserFooter";
 const Footer = () => (
   <footer>
     <nav>
-      <ul>
+      <ul class="nav">
         {/* <li>
           <a href="/">Home</a>
         </li>
@@ -13,14 +13,24 @@ const Footer = () => (
           <a href="/about">About</a>
         </li> */}
         <li>
-          <Link to="/main">Edit todo list via login</Link>
-        </li>
-        <li>
-          <Link to="/about">
-            Go to guest version: check Tim's unavailable time
+          <Link to="/main" class="navLink">
+            Edit schedule
           </Link>
         </li>
-        <UserFooter />
+        <li>
+          <Link to="/about" class="navLink">
+            Guest view
+          </Link>
+        </li>
+        <li>
+          <Link to="/logout">Logout</Link>
+        </li>
+        <li>
+          <Link to="/register">Register</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
     </nav>
   </footer>

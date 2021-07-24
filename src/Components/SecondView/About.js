@@ -11,8 +11,8 @@ import {
 const MainModule = () => {
   return (
     <div>
-      This is the main module.
-      Current time offset at your timezone: {(new Date()).getTimezoneOffset()/60}
+      Current time offset at your timezone:{" "}
+      {new Date().getTimezoneOffset() / 60} Hours
       <HideList />
     </div>
   );
