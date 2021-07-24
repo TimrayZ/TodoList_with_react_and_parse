@@ -82,8 +82,7 @@ const MainList = () => {
   return (
     <div>
       <hr />
-      This is the main list parent component. Timothy is offline during the
-      following time:
+      Timothy is offline during the following time:
       <div>
         {todos.length > 0 && (
           <ul>

@@ -6,8 +6,8 @@ const HideForm = ({ onChange, onClick }) => {
     <div>
       <hr />
       {/* This is the main form child component. */}
-      You are not currently logged in, you can check the current timetable of
-      Tim or go back to log in page.
+      You can check the current timetable of Tim. After logging in, you can go
+      to the editing page to add appointment.
     </div>
   );
 };
