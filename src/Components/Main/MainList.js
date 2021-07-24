@@ -98,7 +98,9 @@ const MainList = () => {
   return (
     <div>
       <hr />
-      Host schedule
+      <h3>Host schedule</h3>
+      Current time offset at your timezone:{" "}
+      {new Date().getTimezoneOffset() / 60} Hours
       <div>
         {todos.length > 0 && (
           <ul>
